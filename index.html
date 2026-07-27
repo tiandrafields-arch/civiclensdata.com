@@ -555,7 +555,7 @@
   <div class="capture" id="notify">
     <div class="capture-row" id="hero-row">
       <input type="email" id="hero-email" placeholder="Enter your email" autocomplete="email" aria-label="Email address" />
-      <button onclick="joinList('hero')">Notify me</button>
+      <button type="button" onclick="joinList('hero')">Notify me</button>
     </div>
     <div class="capture-success" id="hero-success">You are on the list. We will reach out before launch.</div>
     <p class="capture-note">Early access and Kickstarter launch notification. No spam.</p>
@@ -637,25 +637,73 @@
 </footer>
 
 <script>
-  function joinList(id) {
+  // ═══════════════════════════════════════════════════════════
+  // FORMSPREE ENDPOINT
+  // Replace the ID below with your own form ID from formspree.io.
+  // After creating a form there, you get a URL like:
+  //   https://formspree.io/f/xxxxxxxx
+  // Paste only the part after /f/ in place of YOUR_FORM_ID.
+  // ═══════════════════════════════════════════════════════════
+  const FORMSPREE_ID = "mvzedeqq";
+  const FORMSPREE_URL = "https://formspree.io/f/" + FORMSPREE_ID;
+
+  async function joinList(id) {
     const input = document.getElementById(id + '-email');
     const row = document.getElementById(id + '-row');
     const success = document.getElementById(id + '-success');
+    const button = row.querySelector('button');
     const email = input.value.trim();
+
+    // Basic validation
     if (!email || !email.includes('@') || !email.includes('.')) {
       row.style.borderColor = '#FF5A6E';
       input.focus();
       setTimeout(() => { row.style.borderColor = ''; }, 1600);
       return;
     }
-    row.style.display = 'none';
-    success.style.display = 'block';
-    console.log('Waitlist signup:', email);
+
+    // Disable while sending
+    const originalLabel = button.textContent;
+    button.textContent = 'Sending…';
+    button.disabled = true;
+
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          source: 'civiclensdata.com waitlist',
+          _subject: 'New CivicLens Data waitlist signup'
+        })
+      });
+
+      if (response.ok) {
+        row.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        // Formspree returned an error (e.g. endpoint not set up yet)
+        button.textContent = originalLabel;
+        button.disabled = false;
+        row.style.borderColor = '#FF5A6E';
+        input.focus();
+        setTimeout(() => { row.style.borderColor = ''; }, 2200);
+      }
+    } catch (err) {
+      // Network error — restore the button so the user can retry
+      button.textContent = originalLabel;
+      button.disabled = false;
+      row.style.borderColor = '#FF5A6E';
+      setTimeout(() => { row.style.borderColor = ''; }, 2200);
+    }
   }
 
   document.querySelectorAll('input[type=email]').forEach(input => {
     input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') joinList('hero');
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        joinList('hero');
+      }
     });
   });
 </script>
