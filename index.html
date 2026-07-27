@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicLens Data — AI-powered civic data. Human-designed equity.</title>
+  <meta name="description" content="CivicLens Data transforms raw government data into community-legible policy impact tools. AI-automated analysis governed by human-designed equity frameworks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════
+       CIVICLENS DATA — DIGITAL STRATOSPHERE
+       Brand Toolkit CSS Variable Sheet
+       ═══════════════════════════════════════════ */
+    :root {
+      /* Backgrounds */
+      --obsidian:      #06080F;   /* Obsidian Black — page base */
+      --midnight:      #0B1424;   /* Midnight Navy — section bands */
+      --panel:         #101B30;   /* Elevated panel surface */
+      --panel-edge:    #1B2A45;   /* Panel borders and hairlines */
+
+      /* Accents */
+      --cyan:          #00E5FF;   /* Electric Cyan — AI, automation, signal */
+      --cyan-glow:     rgba(0,229,255,0.14);
+      --silver:        #C7D3E8;   /* Neon Silver — structure, secondary accent */
+      --silver-dim:    #8B99B5;   /* Silver muted — supporting text */
+      --amber:         #FFB13D;   /* Amber — human methodology, community */
+      --amber-glow:    rgba(255,177,61,0.12);
+
+      /* Text */
+      --text-hi:       #EDF2FB;   /* Highest contrast text */
+      --text-mid:      #A9B6CE;   /* Body text */
+      --text-low:      #5D6B85;   /* Captions, labels */
+
+      /* Typography scale */
+      --font-display:  'Space Grotesk', sans-serif;
+      --font-body:     'Inter', sans-serif;
+      --h1-size:       clamp(2.5rem, 5.5vw, 4rem);      /* 700 weight */
+      --h2-size:       clamp(1.6rem, 3vw, 2.3rem);      /* 500 weight */
+      --h3-size:       1.05rem;                          /* 700 weight, tracked */
+      --body-size:     1rem;                             /* 400 weight */
+      --label-size:    0.72rem;                          /* 600 weight, wide tracked */
+      --track-wide:    0.18em;
+      --track-label:   0.28em;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      background: var(--obsidian);
+      color: var(--text-mid);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--cyan); color: var(--obsidian); }
+
+    h1, h2, h3 { font-family: var(--font-display); color: var(--text-hi); }
+
+    /* ── CONSTELLATION BACKGROUND ── */
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    main, nav, footer { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(6,8,15,0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--panel-edge);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: var(--track-wide);
+      color: var(--text-hi);
+    }
+
+    .brand-name b { font-weight: 700; color: var(--cyan); }
+
+    .brand-name .tag {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.52rem;
+      font-weight: 600;
+      letter-spacing: 0.5em;
+      color: var(--text-low);
+      margin-top: 1px;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: var(--label-size);
+      font-weight: 500;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-decoration: none;
+      border: 1px solid rgba(0,229,255,0.4);
+      padding: 0.6rem 1.5rem;
+      border-radius: 3px;
+      transition: background 0.25s, box-shadow 0.25s, color 0.25s;
+    }
+
+    .nav-link:hover {
+      background: var(--cyan);
+      color: var(--obsidian);
+      box-shadow: 0 0 28px var(--cyan-glow), 0 0 12px rgba(0,229,255,0.35);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-logo { margin-bottom: 2.5rem; }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: var(--label-size);
+      font-weight: 600;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--amber);
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-size: var(--h1-size);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+      margin-bottom: 1.75rem;
+    }
+
+    h1 .thin { font-weight: 300; display: block; color: var(--silver); }
+    h1 .glow { color: var(--cyan); }
+
+    .hero-sub {
+      font-size: 1.08rem;
+      max-width: 620px;
+      margin: 0 auto 3rem;
+      color: var(--text-mid);
+    }
+
+    .hero-sub strong { color: var(--text-hi); font-weight: 600; }
+
+    /* ── EMAIL CAPTURE ── */
+    .capture { width: 100%; max-width: 480px; margin: 0 auto; }
+
+    .capture-row {
+      display: flex;
+      background: var(--panel);
+      border: 1px solid var(--panel-edge);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .capture-row:focus-within {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 1px var(--cyan), 0 0 36px var(--cyan-glow);
+    }
+
+    .capture-row input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 1.05rem 1.25rem;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--text-hi);
+    }
+
+    .capture-row input::placeholder { color: var(--text-low); }
+
+    .capture-row button {
+      border: none;
+      background: var(--cyan);
+      color: var(--obsidian);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.74rem;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      padding: 0 1.7rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.25s, box-shadow 0.25s;
+    }
+
+    .capture-row button:hover {
+      background: var(--amber);
+      box-shadow: 0 0 28px var(--amber-glow);
+    }
+
+    .capture-note {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--text-low);
+      margin-top: 0.9rem;
+    }
+
+    .capture-success {
+      display: none;
+      border: 1px solid var(--amber);
+      background: var(--amber-glow);
+      border-radius: 4px;
+      padding: 1.05rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--amber);
+      font-weight: 500;
+    }
+
+    /* ── SECTION SCAFFOLD ── */
+    section { padding: 6rem 2.5rem; }
+
+    .inner { max-width: 1100px; margin: 0 auto; }
+
+    .sec-label {
+      font-family: var(--font-display);
+      font-size: var(--label-size);
+      font-weight: 600;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .sec-label::before {
+      content: '';
+      width: 34px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    h2 {
+      font-size: var(--h2-size);
+      font-weight: 500;
+      line-height: 1.22;
+      margin-bottom: 1rem;
+      max-width: 640px;
+    }
+
+    h2 b { font-weight: 700; color: var(--cyan); }
+    h2 .amber { color: var(--amber); font-weight: 700; }
+
+    .sec-sub {
+      font-size: 0.98rem;
+      max-width: 600px;
+      margin-bottom: 3.2rem;
+      color: var(--text-mid);
+    }
+
+    /* ── METHODOLOGY: DUAL COLUMN ── */
+    .methodology { background: var(--midnight); border-top: 1px solid var(--panel-edge); border-bottom: 1px solid var(--panel-edge); }
+
+    .dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .dual-col {
+      background: var(--panel);
+      border: 1px solid var(--panel-edge);
+      border-radius: 6px;
+      padding: 2.2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dual-col::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+
+    .dual-col.human::before { background: var(--amber); }
+    .dual-col.machine::before { background: var(--cyan); }
+
+    .dual-tag {
+      font-family: var(--font-display);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 3px;
+    }
+
+    .human .dual-tag { color: var(--amber); background: var(--amber-glow); }
+    .machine .dual-tag { color: var(--cyan); background: var(--cyan-glow); }
+
+    .dual-col h3 {
+      font-size: var(--h3-size);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.2rem;
+    }
+
+    .dual-list { list-style: none; }
+
+    .dual-list li {
+      font-size: 0.86rem;
+      line-height: 1.65;
+      padding-left: 1.4rem;
+      position: relative;
+      margin-bottom: 0.85rem;
+      color: var(--text-mid);
+    }
+
+    .dual-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 1px;
+      transform: rotate(45deg);
+    }
+
+    .human .dual-list li::before { background: var(--amber); }
+    .machine .dual-list li::before { background: var(--cyan); }
+
+    .method-bridge {
+      margin-top: 1.5rem;
+      border: 1px solid var(--panel-edge);
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--amber-glow), var(--cyan-glow));
+      padding: 1.4rem 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-hi);
+    }
+
+    .method-bridge b { color: var(--amber); }
+    .method-bridge span { color: var(--cyan); font-weight: 600; }
+
+    /* ── TECH SECTION ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .tech-card {
+      border: 1px solid var(--panel-edge);
+      border-radius: 6px;
+      background: var(--panel);
+      padding: 1.8rem 1.6rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .tech-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+    }
+
+    .tech-stack-label {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--silver-dim);
+      margin-bottom: 0.9rem;
+    }
+
+    .tech-card h3 {
+      font-size: var(--h3-size);
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+
+    .tech-card p { font-size: 0.82rem; color: var(--text-mid); }
+
+    .tech-card .hl { color: var(--cyan); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--panel-edge);
+      padding: 2.4rem 2.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 300;
+      letter-spacing: var(--track-wide);
+      color: var(--text-hi);
+    }
+
+    .footer-brand b { font-weight: 700; color: var(--cyan); }
+
+    .footer-meta {
+      font-size: 0.72rem;
+      color: var(--text-low);
+      line-height: 1.9;
+      text-align: right;
+    }
+
+    .footer-meta a { color: var(--silver-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-meta a:hover { color: var(--cyan); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .dual { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .footer-meta { text-align: left; }
+      section { padding: 4.5rem 1.5rem; }
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tech-card:hover { transform: none; }
+      .pulse { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Constellation background -->
+<svg class="stars" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 800" aria-hidden="true">
+  <line x1="120" y1="140" x2="310" y2="90" stroke="#1B2A45" stroke-width="0.6"/>
+  <line x1="310" y1="90" x2="470" y2="210" stroke="#1B2A45" stroke-width="0.6"/>
+  <line x1="900" y1="120" x2="1080" y2="240" stroke="#1B2A45" stroke-width="0.6"/>
+  <line x1="1080" y1="240" x2="980" y2="420" stroke="#1B2A45" stroke-width="0.6"/>
+  <line x1="180" y1="600" x2="360" y2="700" stroke="#1B2A45" stroke-width="0.6"/>
+  <circle cx="120" cy="140" r="1.6" fill="#00E5FF" opacity="0.55"/>
+  <circle cx="310" cy="90" r="1.2" fill="#C7D3E8" opacity="0.45"/>
+  <circle cx="470" cy="210" r="1.5" fill="#00E5FF" opacity="0.4"/>
+  <circle cx="900" cy="120" r="1.3" fill="#C7D3E8" opacity="0.5"/>
+  <circle cx="1080" cy="240" r="1.7" fill="#00E5FF" opacity="0.5"/>
+  <circle cx="980" cy="420" r="1.2" fill="#FFB13D" opacity="0.45"/>
+  <circle cx="180" cy="600" r="1.4" fill="#C7D3E8" opacity="0.4"/>
+  <circle cx="360" cy="700" r="1.6" fill="#00E5FF" opacity="0.45"/>
+  <circle cx="620" cy="500" r="1.1" fill="#C7D3E8" opacity="0.35"/>
+  <circle cx="760" cy="650" r="1.3" fill="#FFB13D" opacity="0.4"/>
+</svg>
+
+<nav>
+  <a class="brand" href="#">
+    <!-- ═══ THE SPATIAL PRISM — CivicLens Data logo mark ═══ -->
+    <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="6" y="6" width="36" height="36" stroke="#1B2A45" stroke-width="1" fill="none"/>
+      <rect x="13" y="13" width="22" height="22" stroke="#C7D3E8" stroke-width="0.8" fill="none" opacity="0.5"/>
+      <circle cx="6" cy="6" r="2" fill="#00E5FF"/>
+      <circle cx="42" cy="6" r="1.5" fill="#C7D3E8"/>
+      <circle cx="6" cy="42" r="1.5" fill="#C7D3E8"/>
+      <circle cx="42" cy="42" r="2" fill="#00E5FF"/>
+      <line x1="6" y1="6" x2="24" y2="24" stroke="#00E5FF" stroke-width="1"/>
+      <line x1="42" y1="42" x2="24" y2="24" stroke="#00E5FF" stroke-width="1"/>
+      <line x1="42" y1="6" x2="24" y2="24" stroke="#C7D3E8" stroke-width="0.6" opacity="0.6"/>
+      <line x1="6" y1="42" x2="24" y2="24" stroke="#C7D3E8" stroke-width="0.6" opacity="0.6"/>
+      <circle cx="24" cy="24" r="3.2" fill="#FFB13D"/>
+    </svg>
+    <span class="brand-name">CIVIC<b>LENS</b><span class="tag">DATA</span></span>
+  </a>
+  <a class="nav-link" href="#notify">Get notified</a>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-logo">
+    <svg width="88" height="88" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CivicLens Data logo — The Spatial Prism">
+      <rect x="6" y="6" width="36" height="36" stroke="#1B2A45" stroke-width="1" fill="none"/>
+      <rect x="13" y="13" width="22" height="22" stroke="#C7D3E8" stroke-width="0.8" fill="none" opacity="0.5"/>
+      <circle cx="6" cy="6" r="2" fill="#00E5FF"/>
+      <circle cx="42" cy="6" r="1.5" fill="#C7D3E8"/>
+      <circle cx="6" cy="42" r="1.5" fill="#C7D3E8"/>
+      <circle cx="42" cy="42" r="2" fill="#00E5FF"/>
+      <line x1="6" y1="6" x2="24" y2="24" stroke="#00E5FF" stroke-width="1"/>
+      <line x1="42" y1="42" x2="24" y2="24" stroke="#00E5FF" stroke-width="1"/>
+      <line x1="42" y1="6" x2="24" y2="24" stroke="#C7D3E8" stroke-width="0.6" opacity="0.6"/>
+      <line x1="6" y1="42" x2="24" y2="24" stroke="#C7D3E8" stroke-width="0.6" opacity="0.6"/>
+      <circle cx="24" cy="24" r="3.2" fill="#FFB13D">
+        <animate attributeName="opacity" values="1;0.55;1" dur="3s" repeatCount="indefinite" class="pulse"/>
+      </circle>
+    </svg>
+  </div>
+  <div class="hero-eyebrow">Launching 2027</div>
+  <h1>
+    <span class="thin">Government data is public.</span>
+    We make it <span class="glow">powerful.</span>
+  </h1>
+  <p class="hero-sub">
+    CivicLens Data is an <strong>AI-powered civic data platform</strong> that transforms raw government data into community-legible policy impact tools — governed by <strong>human-designed equity frameworks</strong> at every step.
+  </p>
+  <div class="capture" id="notify">
+    <div class="capture-row" id="hero-row">
+      <input type="email" id="hero-email" placeholder="Enter your email" autocomplete="email" aria-label="Email address" />
+      <button onclick="joinList('hero')">Notify me</button>
+    </div>
+    <div class="capture-success" id="hero-success">You are on the list. We will reach out before launch.</div>
+    <p class="capture-note">Early access and Kickstarter launch notification. No spam.</p>
+  </div>
+</section>
+
+<!-- ═══ METHODOLOGY ═══ -->
+<section class="methodology">
+  <div class="inner">
+    <div class="sec-label">The methodology</div>
+    <h2><span class="amber">Human-designed.</span> <b>AI-accelerated.</b></h2>
+    <p class="sec-sub">Every analysis runs inside a methodology built from equity frameworks, domain expertise, and community translation standards. AI is the engine. It is never the driver.</p>
+    <div class="dual">
+      <div class="dual-col human">
+        <span class="dual-tag">Human layer</span>
+        <h3>The framework that governs</h3>
+        <ul class="dual-list">
+          <li>Equity frameworks developed through a decade of policy analysis and community advocacy</li>
+          <li>Legal context mapping across statutes, regulations, and case law triggers</li>
+          <li>Community translation standards written for real people, not policy insiders</li>
+          <li>Human review of every output before publication</li>
+        </ul>
+      </div>
+      <div class="dual-col machine">
+        <span class="dual-tag">AI layer</span>
+        <h3>The engine that executes</h3>
+        <ul class="dual-list">
+          <li>Automated ingestion and normalization of public government datasets</li>
+          <li>Pattern detection, anomaly flagging, and longitudinal trend analysis at machine speed</li>
+          <li>Plain-language summarization at three reading levels simultaneously</li>
+          <li>One-click generation of advocacy briefs, legal memoranda, and media summaries</li>
+        </ul>
+      </div>
+    </div>
+    <div class="method-bridge">
+      <b>Full AI transparency disclosure</b> ships with every analysis — <span>what the machine did, what the human decided, and how to verify both.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TECH ═══ -->
+<section>
+  <div class="inner">
+    <div class="sec-label">The infrastructure</div>
+    <h2>Spatial analysis, <b>built to deploy.</b></h2>
+    <p class="sec-sub">Interactive data dashboards powered by a proven geospatial and automation stack — validated through live legislative battles in Louisiana.</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-stack-label">Analysis engine</div>
+        <h3>Python + QGIS</h3>
+        <p>Spatial joins at the census tract, district, and precinct level. <span class="hl">Certified centroid-in-polygon methodology</span> with demographic disaggregation across race, income, age, and geography.</p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-stack-label">Delivery layer</div>
+        <h3>HTML + CSS Dashboards</h3>
+        <p>Lightweight, interactive, publicly hosted impact dashboards that load on any device — <span class="hl">no login, no paywall, no data science degree required.</span></p>
+      </div>
+      <div class="tech-card">
+        <div class="tech-stack-label">Data operations</div>
+        <h3>Airtable Pipeline</h3>
+        <p>Structured data operations connecting ingestion to publication, with <span class="hl">version history and methodology documentation</span> preserved as a public evidence record.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">CIVIC<b>LENS</b>DATA.COM</div>
+    <div class="footer-meta">
+      A product of Provisional Consulting LLC<br />
+      <a href="mailto:info@tiafields.com">info@tiafields.com</a> · Baker, Louisiana<br />
+      © 2026 Provisional Consulting LLC. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function joinList(id) {
+    const input = document.getElementById(id + '-email');
+    const row = document.getElementById(id + '-row');
+    const success = document.getElementById(id + '-success');
+    const email = input.value.trim();
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      row.style.borderColor = '#FF5A6E';
+      input.focus();
+      setTimeout(() => { row.style.borderColor = ''; }, 1600);
+      return;
+    }
+    row.style.display = 'none';
+    success.style.display = 'block';
+    console.log('Waitlist signup:', email);
+  }
+
+  document.querySelectorAll('input[type=email]').forEach(input => {
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') joinList('hero');
+    });
+  });
+</script>
+
+</body>
+</html>

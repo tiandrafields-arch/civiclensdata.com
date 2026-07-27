@@ -1,0 +1,17 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Node (if build tooling is added later)
+node_modules/
+dist/
+
+# Environment and secrets — never commit these
+.env
+.env.*
+*.key

@@ -1,0 +1,28 @@
+Copyright (c) 2026 Provisional Consulting LLC. All rights reserved.
+
+This repository contains the public launch website for CivicLens Data,
+a product of Provisional Consulting LLC.
+
+PERMITTED:
+- Viewing this repository and its source code as hosted on GitHub
+- Accessing the published website at civiclensdata.com
+
+NOT PERMITTED without prior written permission from Provisional
+Consulting LLC:
+- Copying, reproducing, or redistributing the site design, layout,
+  or source code
+- Using the CivicLens Data name, logo, brand system, color palette,
+  or any visual identity elements
+- Creating derivative works based on the content or design of this
+  repository
+- Commercial use of any material in this repository
+
+The CivicLens Data name and The Spatial Prism logo mark are
+proprietary identifiers of Provisional Consulting LLC.
+
+Future platform components of CivicLens Data intended for open
+source release will be published in separate repositories under
+their own open source licenses (anticipated Apache License 2.0).
+This repository is not one of them.
+
+For permissions and inquiries: info@tiafields.com
